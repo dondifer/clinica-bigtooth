@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="BigTooth Clínica Dental en Deusto, Bilbao. Implantes, ortodoncia, blanqueamiento y estética dental. Tecnología digital 3D, sedación consciente y atención en euskera.">
+<meta property="og:title" content="BigTooth — Clínica Dental Deusto, Bilbao">
+<meta property="og:description" content="Tu sonrisa merece artesanía dental. Tecnología digital, sedación consciente y atención en euskera.">
+<meta property="og:type" content="website">
+<title>BigTooth — Clínica Dental Deusto, Bilbao</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ice:#F0F5F7;--ice2:#E4EEF2;--slate:#1B2D3A;--slate2:#243848;
+  --teal:#2A7C6F;--teal2:#1F5F55;--mint:#A8D5CC;--mint2:#7BBFB5;
+  --blue:#3A6EA8;--text:#1B2D3A;--muted:#5A7080;
+  --white:#F7FAFB;--border:rgba(27,45,58,0.1);
+}
+body{font-family:'DM Sans',sans-serif;background:var(--ice);color:var(--text);line-height:1.6}
+a{text-decoration:none;color:inherit}
+nav{background:var(--white);border-bottom:1px solid rgba(42,124,111,0.2);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+.logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--slate);letter-spacing:-0.5px;display:flex;align-items:center;gap:8px}
+.logo span{color:var(--teal)}
+.logo-icon{width:28px;height:28px;background:var(--slate);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-size:13px;color:var(--muted);letter-spacing:0.02em;transition:color .2s}
+.nav-links a:hover{color:var(--slate)}
+.nav-cta{background:var(--teal);color:var(--white)!important;padding:8px 18px;border-radius:2px;font-size:13px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;transition:background .2s}
+.nav-cta:hover{background:var(--teal2)!important}
+.hero{background:var(--slate);min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:4rem 2rem}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1400&q=80') center/cover;opacity:0.12}
+.hero-texture{position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 3px,rgba(42,124,111,0.04) 3px,rgba(42,124,111,0.04) 6px)}
+.hero-content{position:relative;max-width:700px}
+.hero-eyebrow{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mint);font-weight:500;margin-bottom:1.5rem;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--mint)}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,4.5rem);font-weight:700;color:var(--white);line-height:1.1;margin-bottom:1.5rem;letter-spacing:-1px}
+.hero h1 em{font-style:italic;color:var(--mint)}
+.hero-sub{font-size:16px;color:rgba(247,250,251,0.6);max-width:480px;margin-bottom:2.5rem;font-weight:300;line-height:1.8}
+.hero-actions{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.btn-primary{background:var(--teal);color:var(--white);padding:14px 28px;font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;border-radius:1px}
+.btn-primary:hover{background:var(--teal2)}
+.btn-ghost{color:var(--white);font-size:13px;letter-spacing:0.05em;border-bottom:1px solid rgba(168,213,204,0.5);padding-bottom:2px;opacity:.8}
+.hero-badges{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem}
+.badge{background:rgba(42,124,111,0.15);border:1px solid rgba(168,213,204,0.25);color:var(--mint);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:5px 12px;border-radius:1px}
+.section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
+.section-label{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem;font-weight:500}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--slate);line-height:1.2;margin-bottom:1rem;letter-spacing:-0.5px}
+.divider{width:48px;height:2px;background:var(--teal);margin:1.5rem 0}
+.services-bg{background:var(--white)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;margin-top:3rem;border:1px solid rgba(27,45,58,0.08)}
+.svc-card{background:var(--white);padding:2.5rem 2rem;border-right:1px solid rgba(27,45,58,0.06);position:relative;overflow:hidden}
+.svc-card:last-child{border-right:none}
+.svc-number{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:rgba(42,124,111,0.1);position:absolute;top:1rem;right:1.5rem;line-height:1}
+.svc-icon{width:40px;height:40px;background:rgba(42,124,111,0.08);border:1px solid rgba(42,124,111,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;font-size:18px}
+.svc-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:500;color:var(--slate);margin-bottom:.75rem}
+.svc-desc{font-size:13px;color:var(--muted);line-height:1.7}
+.svc-tag{display:inline-block;margin-top:1rem;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);border-bottom:1px solid currentColor;padding-bottom:1px}
+.about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-img{background:var(--slate);border-radius:2px;min-height:420px;position:relative;overflow:hidden}
+.about-img img{width:100%;height:100%;object-fit:cover;opacity:0.65;display:block}
+.about-img-label{position:absolute;bottom:1.5rem;left:1.5rem;background:var(--teal);color:var(--white);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:6px 14px;font-weight:500}
+.about-stat{display:flex;gap:2rem;margin-top:2rem;flex-wrap:wrap}
+.stat-item{border-left:2px solid var(--teal);padding-left:1rem}
+.stat-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--slate);line-height:1}
+.stat-label{font-size:12px;color:var(--muted);margin-top:4px}
+.diferenciadores{display:flex;flex-direction:column;gap:.75rem;margin-top:1.5rem}
+.dif-item{display:flex;align-items:flex-start;gap:.75rem;font-size:14px;color:var(--text)}
+.dif-dot{width:6px;height:6px;background:var(--teal);border-radius:50%;margin-top:6px;flex-shrink:0}
+.euskera-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(42,124,111,0.1);border:1px solid rgba(42,124,111,0.25);padding:4px 12px;border-radius:1px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-top:1rem}
+.testimon-bg{background:var(--slate);padding:5rem 2rem}
+.testimon-inner{max-width:1100px;margin:0 auto}
+.testimon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem}
+.test-card{background:rgba(255,255,255,0.04);border:1px solid rgba(168,213,204,0.15);padding:2rem;border-radius:2px}
+.test-stars{color:var(--mint);font-size:13px;letter-spacing:2px;margin-bottom:1rem}
+.test-text{font-size:14px;color:rgba(247,250,251,0.65);line-height:1.8;font-style:italic;margin-bottom:1.5rem}
+.test-author{display:flex;align-items:center;gap:.75rem}
+.test-avatar{width:36px;height:36px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--white)}
+.test-name{font-size:13px;color:var(--white);font-weight:500}
+.test-meta{font-size:11px;color:rgba(247,250,251,0.4)}
+.contact-bg{background:var(--ice2);padding:5rem 2rem}
+.contact-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem}
+.contact-item{display:flex;gap:1rem;align-items:flex-start}
+.contact-icon{width:36px;height:36px;background:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.contact-label{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.contact-val{font-size:15px;color:var(--slate);font-weight:500}
+.contact-form{background:var(--white);padding:2.5rem;border:1px solid rgba(27,45,58,0.1)}
+.form-group{margin-bottom:1.25rem}
+.form-group label{display:block;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 14px;background:var(--ice);border:1px solid rgba(27,45,58,0.15);font-family:'DM Sans',sans-serif;font-size:14px;color:var(--slate);outline:none;transition:border .2s;border-radius:1px}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--teal)}
+.form-group textarea{min-height:100px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-submit{width:100%;background:var(--slate);color:var(--white);padding:14px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-family:'DM Sans',sans-serif;font-weight:500;border:none;cursor:pointer;transition:background .2s}
+.form-submit:hover{background:var(--slate2)}
+footer{background:var(--slate);padding:3rem 2rem;border-top:1px solid rgba(168,213,204,0.12)}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:'Playfair Display',serif;font-size:18px;color:var(--white);font-weight:700}
+.footer-logo span{color:var(--mint)}
+.footer-copy{font-size:12px;color:rgba(247,250,251,0.3)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:12px;color:rgba(247,250,251,0.4)}
+.wa-btn{position:fixed;bottom:1.5rem;right:1.5rem;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:200;text-decoration:none}
+.wa-btn svg{width:26px;height:26px;fill:white}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){
+  .about-wrap,.contact-inner{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  .svc-card{border-right:none;border-bottom:1px solid rgba(27,45,58,0.06)}
+  nav .nav-links{display:none}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <div class="logo-icon">🦷</div>
+    Big<span>Tooth</span>
+  </div>
+  <div class="nav-links">
+    <a href="#servicios">Servicios</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#testimonios">Testimonios</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#contacto" class="nav-cta">Reservar cita</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-texture"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Clínica Dental · Deusto, Bilbao</div>
+    <h1>Tu sonrisa merece<br><em>artesanía</em> dental</h1>
+    <p class="hero-sub">Tecnología de última generación combinada con el cuidado y la atención personalizada que mereces. Atendemos también en euskera.</p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">Reservar cita →</a>
+      <a href="#servicios" class="btn-ghost">Ver tratamientos</a>
+    </div>
+    <div class="hero-badges">
+      <span class="badge">Tecnología Digital 3D</span>
+      <span class="badge">Sedación Consciente</span>
+      <span class="badge">Euskaraz artatzen dugu</span>
+    </div>
+  </div>
+</div>
+
+<div class="services-bg" id="servicios">
+  <div class="section">
+    <div class="section-label reveal">Tratamientos</div>
+    <div class="section-title reveal">Lo que hacemos<br>mejor que nadie</div>
+    <div class="divider reveal"></div>
+    <div class="services-grid">
+      <div class="svc-card reveal">
+        <div class="svc-number">01</div>
+        <div class="svc-icon">🦷</div>
+        <div class="svc-name">Implantes Dentales</div>
+        <div class="svc-desc">Soluciones permanentes con implantes de titanio de alta precisión. Escaneado digital sin impresiones incómodas.</div>
+        <span class="svc-tag">Desde 895€</span>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-number">02</div>
+        <div class="svc-icon">✨</div>
+        <div class="svc-name">Ortodoncia</div>
+        <div class="svc-desc">Brackets estéticos e Invisalign. Planificación digital del resultado final antes de empezar el tratamiento.</div>
+        <span class="svc-tag">Valoración gratuita</span>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-number">03</div>
+        <div class="svc-icon">💎</div>
+        <div class="svc-name">Blanqueamiento</div>
+        <div class="svc-desc">Sistemas profesionales Zoom y LED de clínica. Resultados visibles desde la primera sesión, sin dañar el esmalte.</div>
+        <span class="svc-tag">Sesión única</span>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-number">04</div>
+        <div class="svc-icon">🎨</div>
+        <div class="svc-name">Estética Dental</div>
+        <div class="svc-desc">Carillas de porcelana, composite y diseño de sonrisa digital. Transforma tu imagen con precisión artesanal.</div>
+        <span class="svc-tag">Diseño digital previo</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="nosotros" style="padding:5rem 2rem;max-width:1100px;margin:0 auto">
+  <div class="about-wrap">
+    <div class="about-img reveal">
+      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80" alt="Clínica BigTooth interior" loading="lazy">
+      <div class="about-img-label">Deusto · Bilbao</div>
+    </div>
+    <div class="reveal">
+      <div class="section-label">Sobre BigTooth</div>
+      <div class="section-title">Tradición y tecnología en cada tratamiento</div>
+      <div class="divider"></div>
+      <p style="font-size:15px;color:var(--muted);line-height:1.9;margin-bottom:1rem">Llevamos más de 15 años transformando sonrisas en el corazón de Deusto. Combinamos la calidez del trato clásico con equipamiento de diagnóstico digital de última generación.</p>
+      <div class="diferenciadores">
+        <div class="dif-item"><div class="dif-dot"></div>Escáner intraoral 3D — sin impresiones físicas</div>
+        <div class="dif-item"><div class="dif-dot"></div>Sedación consciente con óxido nitroso — sin ansiedad</div>
+        <div class="dif-item"><div class="dif-dot"></div>Precios transparentes — presupuesto cerrado por escrito</div>
+        <div class="dif-item"><div class="dif-dot"></div>Atención en euskera con todo el equipo</div>
+      </div>
+      <div class="about-stat">
+        <div class="stat-item"><div class="stat-num">+2.400</div><div class="stat-label">Pacientes atendidos</div></div>
+        <div class="stat-item"><div class="stat-num">15</div><div class="stat-label">Años en Bilbao</div></div>
+        <div class="stat-item"><div class="stat-num">4.9★</div><div class="stat-label">Google Reviews</div></div>
+      </div>
+      <div class="euskera-badge">🏴 Euskaraz artatzen dugu</div>
+    </div>
+  </div>
+</div>
+
+<div class="testimon-bg" id="testimonios">
+  <div class="testimon-inner">
+    <div class="section-label reveal" style="color:var(--mint)">Testimonios</div>
+    <div class="section-title reveal" style="color:var(--white)">Lo que dicen<br>nuestros pacientes</div>
+    <div class="divider reveal" style="background:var(--teal)"></div>
+    <div class="testimon-grid">
+      <div class="test-card reveal">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-text">"Llevaba años con miedo al dentista. Con la sedación consciente de BigTooth fue completamente diferente. Me pusieron los implantes sin apenas darme cuenta."</div>
+        <div class="test-author"><div class="test-avatar">MU</div><div><div class="test-name">Miren Uriarte</div><div class="test-meta">Paciente de implantes · Getxo</div></div></div>
+      </div>
+      <div class="test-card reveal">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-text">"El diseño digital de mi sonrisa me emocionó. Pude ver el resultado antes de empezar las carillas. El equipo habla euskera perfectamente, para mí eso lo es todo."</div>
+        <div class="test-author"><div class="test-avatar">EG</div><div><div class="test-name">Eneko Gaztañaga</div><div class="test-meta">Carillas · Bilbao</div></div></div>
+      </div>
+      <div class="test-card reveal">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-text">"El presupuesto cerrado fue lo que me convenció. Sin sorpresas, sin extras. El blanqueamiento fue espectacular y lo noté en dos horas."</div>
+        <div class="test-author"><div class="test-avatar">AB</div><div><div class="test-name">Ainhoa Bilbao</div><div class="test-meta">Blanqueamiento · Deusto</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="contact-bg" id="contacto">
+  <div class="contact-inner">
+    <div class="reveal">
+      <div class="section-label">Contacto</div>
+      <div class="section-title">Reserva tu cita</div>
+      <div class="divider"></div>
+      <p style="font-size:15px;color:var(--muted);line-height:1.8">Primera visita de diagnóstico sin compromiso. Te explicamos el tratamiento y te damos presupuesto cerrado en el momento.</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div><div class="contact-label">Dirección</div><div class="contact-val">C/ Lehendakari Aguirre, 23<br>48014 Deusto, Bilbao</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div><div class="contact-label">Teléfono</div><div class="contact-val">944 123 456</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div><div class="contact-label">Horario</div><div class="contact-val">Lun – Vie: 9:00 – 20:00<br>Sábados: 9:00 – 14:00</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div><div class="contact-label">Email</div><div class="contact-val">info@bigtooth.es</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:500;color:var(--slate);margin-bottom:1.5rem">Solicita tu cita</div>
+      <div class="form-row">
+        <div class="form-group"><label>Nombre</label><input type="text" placeholder="Tu nombre"></div>
+        <div class="form-group"><label>Teléfono</label><input type="text" placeholder="944 000 000"></div>
+      </div>
+      <div class="form-group"><label>Email</label><input type="email" placeholder="correo@ejemplo.com"></div>
+      <div class="form-group"><label>Tratamiento de interés</label>
+        <select><option>Implantes dentales</option><option>Ortodoncia</option><option>Blanqueamiento</option><option>Estética dental</option><option>Primera visita general</option></select>
+      </div>
+      <div class="form-group"><label>Mensaje</label><textarea placeholder="Cuéntanos brevemente qué necesitas..."></textarea></div>
+      <button class="form-submit">Reservar cita →</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Big<span>Tooth</span></div>
+    <div class="footer-copy">© 2025 BigTooth Clínica Dental · C/ Lehendakari Aguirre 23, Deusto · 944 123 456</div>
+    <div class="footer-links">
+      <a href="#">Política de privacidad</a>
+      <a href="#">Aviso legal</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/34944123456" class="wa-btn" title="WhatsApp BigTooth" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.998 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.533 5.853L.057 23.786a.5.5 0 00.611.644l6.104-1.6A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.625 0 11.998 0zm0 21.818a9.818 9.818 0 01-5.007-1.374l-.358-.213-3.722.976.994-3.624-.234-.372A9.818 9.818 0 012.182 12c0-5.42 4.396-9.818 9.816-9.818 5.42 0 9.818 4.397 9.818 9.818 0 5.422-4.397 9.818-9.818 9.818z"/></svg>
+</a>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

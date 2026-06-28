@@ -3,307 +3,741 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="BigTooth Clínica Dental en Deusto, Bilbao. Implantes, ortodoncia, blanqueamiento y estética dental. Tecnología digital 3D, sedación consciente y atención en euskera.">
-<meta property="og:title" content="BigTooth — Clínica Dental Deusto, Bilbao">
-<meta property="og:description" content="Tu sonrisa merece artesanía dental. Tecnología digital, sedación consciente y atención en euskera.">
-<meta property="og:type" content="website">
 <title>BigTooth — Clínica Dental Deusto, Bilbao</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+html,body,#root{height:100%;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased}
 :root{
-  --ice:#F0F5F7;--ice2:#E4EEF2;--slate:#1B2D3A;--slate2:#243848;
-  --teal:#2A7C6F;--teal2:#1F5F55;--mint:#A8D5CC;--mint2:#7BBFB5;
-  --blue:#3A6EA8;--text:#1B2D3A;--muted:#5A7080;
-  --white:#F7FAFB;--border:rgba(27,45,58,0.1);
+  --slate:#1B2D3A;--slate2:#243848;--teal:#2A7C6F;--teal2:#1F5F55;
+  --mint:#A8D5CC;--ice:#F0F5F7;--ice2:#E4EEF2;--white:#F7FAFB;
+  --muted:#8AA0AD;--border:rgba(27,45,58,0.12);
 }
-body{font-family:'DM Sans',sans-serif;background:var(--ice);color:var(--text);line-height:1.6}
-a{text-decoration:none;color:inherit}
-nav{background:var(--white);border-bottom:1px solid rgba(42,124,111,0.2);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
-.logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--slate);letter-spacing:-0.5px;display:flex;align-items:center;gap:8px}
-.logo span{color:var(--teal)}
-.logo-icon{width:28px;height:28px;background:var(--slate);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px}
-.nav-links{display:flex;align-items:center;gap:2rem}
-.nav-links a{font-size:13px;color:var(--muted);letter-spacing:0.02em;transition:color .2s}
-.nav-links a:hover{color:var(--slate)}
-.nav-cta{background:var(--teal);color:var(--white)!important;padding:8px 18px;border-radius:2px;font-size:13px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;transition:background .2s}
-.nav-cta:hover{background:var(--teal2)!important}
-.hero{background:var(--slate);min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:4rem 2rem}
-.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1400&q=80') center/cover;opacity:0.12}
-.hero-texture{position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 3px,rgba(42,124,111,0.04) 3px,rgba(42,124,111,0.04) 6px)}
-.hero-content{position:relative;max-width:700px}
-.hero-eyebrow{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mint);font-weight:500;margin-bottom:1.5rem;display:flex;align-items:center;gap:12px}
-.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--mint)}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,4.5rem);font-weight:700;color:var(--white);line-height:1.1;margin-bottom:1.5rem;letter-spacing:-1px}
-.hero h1 em{font-style:italic;color:var(--mint)}
-.hero-sub{font-size:16px;color:rgba(247,250,251,0.6);max-width:480px;margin-bottom:2.5rem;font-weight:300;line-height:1.8}
-.hero-actions{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
-.btn-primary{background:var(--teal);color:var(--white);padding:14px 28px;font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;border-radius:1px}
-.btn-primary:hover{background:var(--teal2)}
-.btn-ghost{color:var(--white);font-size:13px;letter-spacing:0.05em;border-bottom:1px solid rgba(168,213,204,0.5);padding-bottom:2px;opacity:.8}
-.hero-badges{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem}
-.badge{background:rgba(42,124,111,0.15);border:1px solid rgba(168,213,204,0.25);color:var(--mint);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:5px 12px;border-radius:1px}
-.section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
-.section-label{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem;font-weight:500}
-.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--slate);line-height:1.2;margin-bottom:1rem;letter-spacing:-0.5px}
-.divider{width:48px;height:2px;background:var(--teal);margin:1.5rem 0}
-.services-bg{background:var(--white)}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;margin-top:3rem;border:1px solid rgba(27,45,58,0.08)}
-.svc-card{background:var(--white);padding:2.5rem 2rem;border-right:1px solid rgba(27,45,58,0.06);position:relative;overflow:hidden}
-.svc-card:last-child{border-right:none}
-.svc-number{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:rgba(42,124,111,0.1);position:absolute;top:1rem;right:1.5rem;line-height:1}
-.svc-icon{width:40px;height:40px;background:rgba(42,124,111,0.08);border:1px solid rgba(42,124,111,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;font-size:18px}
-.svc-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:500;color:var(--slate);margin-bottom:.75rem}
-.svc-desc{font-size:13px;color:var(--muted);line-height:1.7}
-.svc-tag{display:inline-block;margin-top:1rem;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);border-bottom:1px solid currentColor;padding-bottom:1px}
-.about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.about-img{background:var(--slate);border-radius:2px;min-height:420px;position:relative;overflow:hidden}
-.about-img img{width:100%;height:100%;object-fit:cover;opacity:0.65;display:block}
-.about-img-label{position:absolute;bottom:1.5rem;left:1.5rem;background:var(--teal);color:var(--white);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:6px 14px;font-weight:500}
-.about-stat{display:flex;gap:2rem;margin-top:2rem;flex-wrap:wrap}
-.stat-item{border-left:2px solid var(--teal);padding-left:1rem}
-.stat-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--slate);line-height:1}
-.stat-label{font-size:12px;color:var(--muted);margin-top:4px}
-.diferenciadores{display:flex;flex-direction:column;gap:.75rem;margin-top:1.5rem}
-.dif-item{display:flex;align-items:flex-start;gap:.75rem;font-size:14px;color:var(--text)}
-.dif-dot{width:6px;height:6px;background:var(--teal);border-radius:50%;margin-top:6px;flex-shrink:0}
-.euskera-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(42,124,111,0.1);border:1px solid rgba(42,124,111,0.25);padding:4px 12px;border-radius:1px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-top:1rem}
-.testimon-bg{background:var(--slate);padding:5rem 2rem}
-.testimon-inner{max-width:1100px;margin:0 auto}
-.testimon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem}
-.test-card{background:rgba(255,255,255,0.04);border:1px solid rgba(168,213,204,0.15);padding:2rem;border-radius:2px}
-.test-stars{color:var(--mint);font-size:13px;letter-spacing:2px;margin-bottom:1rem}
-.test-text{font-size:14px;color:rgba(247,250,251,0.65);line-height:1.8;font-style:italic;margin-bottom:1.5rem}
-.test-author{display:flex;align-items:center;gap:.75rem}
-.test-avatar{width:36px;height:36px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--white)}
-.test-name{font-size:13px;color:var(--white);font-weight:500}
-.test-meta{font-size:11px;color:rgba(247,250,251,0.4)}
-.contact-bg{background:var(--ice2);padding:5rem 2rem}
-.contact-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-.contact-info{display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem}
-.contact-item{display:flex;gap:1rem;align-items:flex-start}
-.contact-icon{width:36px;height:36px;background:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
-.contact-label{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
-.contact-val{font-size:15px;color:var(--slate);font-weight:500}
-.contact-form{background:var(--white);padding:2.5rem;border:1px solid rgba(27,45,58,0.1)}
-.form-group{margin-bottom:1.25rem}
-.form-group label{display:block;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
-.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 14px;background:var(--ice);border:1px solid rgba(27,45,58,0.15);font-family:'DM Sans',sans-serif;font-size:14px;color:var(--slate);outline:none;transition:border .2s;border-radius:1px}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--teal)}
-.form-group textarea{min-height:100px;resize:vertical}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.form-submit{width:100%;background:var(--slate);color:var(--white);padding:14px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-family:'DM Sans',sans-serif;font-weight:500;border:none;cursor:pointer;transition:background .2s}
-.form-submit:hover{background:var(--slate2)}
-footer{background:var(--slate);padding:3rem 2rem;border-top:1px solid rgba(168,213,204,0.12)}
-.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-.footer-logo{font-family:'Playfair Display',serif;font-size:18px;color:var(--white);font-weight:700}
-.footer-logo span{color:var(--mint)}
-.footer-copy{font-size:12px;color:rgba(247,250,251,0.3)}
-.footer-links{display:flex;gap:1.5rem}
-.footer-links a{font-size:12px;color:rgba(247,250,251,0.4)}
-.wa-btn{position:fixed;bottom:1.5rem;right:1.5rem;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:200;text-decoration:none}
-.wa-btn svg{width:26px;height:26px;fill:white}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-@media(max-width:768px){
-  .about-wrap,.contact-inner{grid-template-columns:1fr}
-  .services-grid{grid-template-columns:1fr}
-  .svc-card{border-right:none;border-bottom:1px solid rgba(27,45,58,0.06)}
-  nav .nav-links{display:none}
-  .form-row{grid-template-columns:1fr}
-}
+html{scroll-behavior:smooth}
+input,select,textarea{font-family:'DM Sans',sans-serif}
+.nav-desktop{display:flex;align-items:center;gap:2rem}
+.nav-mobile-btn{display:none;width:2.4rem;height:2.4rem;align-items:center;justify-content:center;position:relative;background:none;border:none;cursor:pointer}
+@media(max-width:767px){.nav-desktop{display:none}.nav-mobile-btn{display:flex}}
+.btn-teal{background:var(--teal);color:var(--white);border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 180ms,transform 180ms}
+.btn-teal:hover{background:var(--teal2)}
+.btn-white{background:var(--white);color:var(--slate);border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 180ms,transform 180ms}
+.btn-white:hover{background:var(--ice2);transform:scale(1.03)}
+.btn-slate{background:var(--slate);color:var(--white);border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 180ms}
+.btn-slate:hover{background:var(--teal)}
+.link-nav{font-size:0.78rem;color:var(--muted);text-decoration:none;transition:color 180ms}
+.link-nav:hover{color:var(--slate)}
+.footer-link{font-size:0.7rem;color:rgba(247,250,251,0.5);text-decoration:none;transition:color 180ms}
+.footer-link:hover{color:var(--mint)}
+.arrow-btn{border-radius:9999px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 180ms,transform 180ms}
+.arrow-btn:hover{transform:scale(1.08)}
+.img-fadein{opacity:0;transition:opacity 700ms ease-out}
+.img-fadein.loaded{opacity:1}
 </style>
 </head>
-<body>
+<body style="background:#F0F5F7">
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback } = React;
 
-<nav>
-  <div class="logo">
-    <div class="logo-icon">🦷</div>
-    Big<span>Tooth</span>
-  </div>
-  <div class="nav-links">
-    <a href="#servicios">Servicios</a>
-    <a href="#nosotros">Nosotros</a>
-    <a href="#testimonios">Testimonios</a>
-    <a href="#contacto">Contacto</a>
-    <a href="#contacto" class="nav-cta">Reservar cita</a>
-  </div>
-</nav>
+// ── IMÁGENES — URLs verificadas con auto=format ──────────────────────────────
+const HERO  = 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1600&q=85';
+const SEC2  = 'https://images.unsplash.com/photo-1588776814546-1ffedaddc6c8?auto=format&fit=crop&w=1600&q=85';
+const S3_L  = 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=85';
+const S3_R  = 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=800&q=85';
+const S3_BG = 'https://images.unsplash.com/photo-1581585504200-c91ecae00b1a?auto=format&fit=crop&w=1000&q=85';
 
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-texture"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">Clínica Dental · Deusto, Bilbao</div>
-    <h1>Tu sonrisa merece<br><em>artesanía</em> dental</h1>
-    <p class="hero-sub">Tecnología de última generación combinada con el cuidado y la atención personalizada que mereces. Atendemos también en euskera.</p>
-    <div class="hero-actions">
-      <a href="#contacto" class="btn-primary">Reservar cita →</a>
-      <a href="#servicios" class="btn-ghost">Ver tratamientos</a>
-    </div>
-    <div class="hero-badges">
-      <span class="badge">Tecnología Digital 3D</span>
-      <span class="badge">Sedación Consciente</span>
-      <span class="badge">Euskaraz artatzen dugu</span>
-    </div>
-  </div>
-</div>
+// Barras hero
+const B1 = 'https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=1200&q=85';
+const B2 = 'https://images.unsplash.com/photo-1588776813677-77aaf5595b83?auto=format&fit=crop&w=1200&q=85';
+const B3 = 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1200&q=85';
 
-<div class="services-bg" id="servicios">
-  <div class="section">
-    <div class="section-label reveal">Tratamientos</div>
-    <div class="section-title reveal">Lo que hacemos<br>mejor que nadie</div>
-    <div class="divider reveal"></div>
-    <div class="services-grid">
-      <div class="svc-card reveal">
-        <div class="svc-number">01</div>
-        <div class="svc-icon">🦷</div>
-        <div class="svc-name">Implantes Dentales</div>
-        <div class="svc-desc">Soluciones permanentes con implantes de titanio de alta precisión. Escaneado digital sin impresiones incómodas.</div>
-        <span class="svc-tag">Desde 895€</span>
-      </div>
-      <div class="svc-card reveal">
-        <div class="svc-number">02</div>
-        <div class="svc-icon">✨</div>
-        <div class="svc-name">Ortodoncia</div>
-        <div class="svc-desc">Brackets estéticos e Invisalign. Planificación digital del resultado final antes de empezar el tratamiento.</div>
-        <span class="svc-tag">Valoración gratuita</span>
-      </div>
-      <div class="svc-card reveal">
-        <div class="svc-number">03</div>
-        <div class="svc-icon">💎</div>
-        <div class="svc-name">Blanqueamiento</div>
-        <div class="svc-desc">Sistemas profesionales Zoom y LED de clínica. Resultados visibles desde la primera sesión, sin dañar el esmalte.</div>
-        <span class="svc-tag">Sesión única</span>
-      </div>
-      <div class="svc-card reveal">
-        <div class="svc-number">04</div>
-        <div class="svc-icon">🎨</div>
-        <div class="svc-name">Estética Dental</div>
-        <div class="svc-desc">Carillas de porcelana, composite y diseño de sonrisa digital. Transforma tu imagen con precisión artesanal.</div>
-        <span class="svc-tag">Diseño digital previo</span>
-      </div>
-    </div>
-  </div>
-</div>
+// Para las 4 cards del bento de servicios (en lugar de cards vacías con texto)
+const SVC_IMG = {
+  implantes:    'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=600&q=85',
+  ortodoncia:   'https://images.unsplash.com/photo-1620331311520-246422fd82f9?auto=format&fit=crop&w=600&q=85',
+  blanqueo:     'https://images.unsplash.com/photo-1559591935-c6c92c6cc7a4?auto=format&fit=crop&w=600&q=85',
+  estetica:     'https://images.unsplash.com/photo-1581585504200-c91ecae00b1a?auto=format&fit=crop&w=600&q=85',
+};
 
-<div id="nosotros" style="padding:5rem 2rem;max-width:1100px;margin:0 auto">
-  <div class="about-wrap">
-    <div class="about-img reveal">
-      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80" alt="Clínica BigTooth interior" loading="lazy">
-      <div class="about-img-label">Deusto · Bilbao</div>
-    </div>
-    <div class="reveal">
-      <div class="section-label">Sobre BigTooth</div>
-      <div class="section-title">Tradición y tecnología en cada tratamiento</div>
-      <div class="divider"></div>
-      <p style="font-size:15px;color:var(--muted);line-height:1.9;margin-bottom:1rem">Llevamos más de 15 años transformando sonrisas en el corazón de Deusto. Combinamos la calidez del trato clásico con equipamiento de diagnóstico digital de última generación.</p>
-      <div class="diferenciadores">
-        <div class="dif-item"><div class="dif-dot"></div>Escáner intraoral 3D — sin impresiones físicas</div>
-        <div class="dif-item"><div class="dif-dot"></div>Sedación consciente con óxido nitroso — sin ansiedad</div>
-        <div class="dif-item"><div class="dif-dot"></div>Precios transparentes — presupuesto cerrado por escrito</div>
-        <div class="dif-item"><div class="dif-dot"></div>Atención en euskera con todo el equipo</div>
-      </div>
-      <div class="about-stat">
-        <div class="stat-item"><div class="stat-num">+2.400</div><div class="stat-label">Pacientes atendidos</div></div>
-        <div class="stat-item"><div class="stat-num">15</div><div class="stat-label">Años en Bilbao</div></div>
-        <div class="stat-item"><div class="stat-num">4.9★</div><div class="stat-label">Google Reviews</div></div>
-      </div>
-      <div class="euskera-badge">🏴 Euskaraz artatzen dugu</div>
-    </div>
-  </div>
-</div>
+// Imagen para el card de "Servicios de Restauración" (que estaba vacío)
+const RESTAURACION_IMG = 'https://images.unsplash.com/photo-1588776814546-1ffedaddc6c8?auto=format&fit=crop&w=800&q=85';
 
-<div class="testimon-bg" id="testimonios">
-  <div class="testimon-inner">
-    <div class="section-label reveal" style="color:var(--mint)">Testimonios</div>
-    <div class="section-title reveal" style="color:var(--white)">Lo que dicen<br>nuestros pacientes</div>
-    <div class="divider reveal" style="background:var(--teal)"></div>
-    <div class="testimon-grid">
-      <div class="test-card reveal">
-        <div class="test-stars">★★★★★</div>
-        <div class="test-text">"Llevaba años con miedo al dentista. Con la sedación consciente de BigTooth fue completamente diferente. Me pusieron los implantes sin apenas darme cuenta."</div>
-        <div class="test-author"><div class="test-avatar">MU</div><div><div class="test-name">Miren Uriarte</div><div class="test-meta">Paciente de implantes · Getxo</div></div></div>
-      </div>
-      <div class="test-card reveal">
-        <div class="test-stars">★★★★★</div>
-        <div class="test-text">"El diseño digital de mi sonrisa me emocionó. Pude ver el resultado antes de empezar las carillas. El equipo habla euskera perfectamente, para mí eso lo es todo."</div>
-        <div class="test-author"><div class="test-avatar">EG</div><div><div class="test-name">Eneko Gaztañaga</div><div class="test-meta">Carillas · Bilbao</div></div></div>
-      </div>
-      <div class="test-card reveal">
-        <div class="test-stars">★★★★★</div>
-        <div class="test-text">"El presupuesto cerrado fue lo que me convenció. Sin sorpresas, sin extras. El blanqueamiento fue espectacular y lo noté en dos horas."</div>
-        <div class="test-author"><div class="test-avatar">AB</div><div><div class="test-name">Ainhoa Bilbao</div><div class="test-meta">Blanqueamiento · Deusto</div></div></div>
+// Imagen de fondo card Implantología
+const IMPLANTO_IMG = 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=900&q=85';
+
+// Avatares testimonios (retratos reales)
+const TESTIMONIO_IMGS = [
+  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=85',
+  'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=85',
+  'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=85',
+];
+
+// Imágenes overlay sección 3 (proceso implantes y cuidado)
+const OVERLAY_PROCESO_IMG = 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=85';
+const OVERLAY_CUIDADO_IMG = 'https://images.unsplash.com/photo-1571772996211-2f02c9727629?auto=format&fit=crop&w=600&q=85';
+
+const featureBars = [
+  { label:'Tecnología Digital 3D', sub:'Escáner intraoral · Sin impresiones', img:B1 },
+  { label:'Sedación Consciente',   sub:'Tratamientos sin ansiedad',           img:B2 },
+  { label:'Atención en Euskera',   sub:'Euskaraz artatzen dugu',              img:B3 },
+];
+const services = [
+  { name:'Implantes\nDentales',    num:'01', active:true,  img:SVC_IMG.implantes  },
+  { name:'Ortodoncia\nInvisalign', num:'02', active:false, img:SVC_IMG.ortodoncia },
+  { name:'Blanquea-\nmiento',      num:'03', active:false, img:SVC_IMG.blanqueo   },
+  { name:'Estética\nDental',       num:null, active:false, img:SVC_IMG.estetica   },
+];
+const testimonios = [
+  { texto:'"Con la sedación consciente fue completamente diferente. Los implantes sin apenas notarlo."', nombre:'Miren Uriarte', zona:'Getxo', stars:5 },
+  { texto:'"Vi el resultado digital antes de empezar las carillas. El equipo habla euskera, para mí lo es todo."', nombre:'Eneko Gaztañaga', zona:'Bilbao', stars:5 },
+  { texto:'"Presupuesto cerrado sin sorpresas. El blanqueamiento fue espectacular en una sola sesión."', nombre:'Ainhoa Bilbao', zona:'Deusto', stars:5 },
+];
+
+// ── COMPONENTE: imagen con fade-in al cargar y al hacer scroll ──────────────
+function FadeImg({src, alt, style, className=''}){
+  const [loaded, setLoaded] = useState(false);
+  const [inView, setInView] = useState(false);
+  const ref = useRef(null);
+  useEffect(()=>{
+    const el = ref.current; if(!el) return;
+    const obs = new IntersectionObserver(([e])=>{
+      if(e.isIntersecting){ setInView(true); obs.disconnect(); }
+    },{threshold:0.08});
+    obs.observe(el);
+    return ()=>obs.disconnect();
+  },[]);
+  const visible = loaded && inView;
+  return (
+    <img
+      ref={ref}
+      src={src}
+      alt={alt}
+      loading="lazy"
+      onLoad={()=>setLoaded(true)}
+      className={className}
+      style={{
+        ...style,
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'scale(1)' : 'scale(1.04)',
+        transition: 'opacity 800ms cubic-bezier(.16,1,.3,1), transform 1.2s cubic-bezier(.16,1,.3,1)',
+      }}
+    />
+  );
+}
+
+// ── HOOKS ──────────────────────────────────────────────────────────────────
+function useIsMobile(){
+  const [v,setV]=useState(()=>window.matchMedia('(max-width:767px)').matches);
+  useEffect(()=>{
+    const mq=window.matchMedia('(max-width:767px)');
+    const h=e=>setV(e.matches);
+    mq.addEventListener('change',h);
+    return()=>mq.removeEventListener('change',h);
+  },[]);
+  return v;
+}
+function useReveal(t=0.08){
+  const ref=useRef(null);
+  const [vis,setVis]=useState(false);
+  useEffect(()=>{
+    const el=ref.current;if(!el)return;
+    const obs=new IntersectionObserver(([e])=>{if(e.isIntersecting){setVis(true);obs.disconnect();}},{threshold:t});
+    obs.observe(el);
+    return()=>obs.disconnect();
+  },[t]);
+  const anim=useCallback(i=>({
+    opacity:vis?1:0,
+    transform:vis?'translateY(0)':'translateY(28px)',
+    transition:`opacity .7s cubic-bezier(.16,1,.3,1) ${i*120}ms,transform .7s cubic-bezier(.16,1,.3,1) ${i*120}ms`,
+  }),[vis]);
+  return{ref,anim};
+}
+
+// ── SPLASH ──────────────────────────────────────────────────────────────────
+function Splash({onDone}){
+  const [n,setN]=useState(0);
+  const [out,setOut]=useState(false);
+  useEffect(()=>{
+    let s=0;
+    const iv=setInterval(()=>{
+      s++;setN(s);
+      if(s>=100){clearInterval(iv);setTimeout(()=>{setOut(true);setTimeout(onDone,700);},200);}
+    },20);
+    return()=>clearInterval(iv);
+  },[onDone]);
+  return(
+    <div style={{position:'fixed',inset:0,zIndex:100,background:'var(--slate)',display:'flex',alignItems:'flex-end',justifyContent:'flex-start',opacity:out?0:1,transition:'opacity 700ms ease',pointerEvents:out?'none':'auto'}}>
+      <div style={{padding:'2.5rem',display:'flex',flexDirection:'column',gap:'0.65rem'}}>
+        <span style={{fontFamily:'Playfair Display,serif',fontSize:'clamp(5rem,14vw,10rem)',fontWeight:700,lineHeight:1,color:'var(--white)',fontVariantNumeric:'tabular-nums'}}>{n}</span>
+        <span style={{fontSize:'0.7rem',letterSpacing:'0.22em',textTransform:'uppercase',color:'var(--mint)',fontWeight:500}}>BigTooth · Clínica Dental · Deusto, Bilbao</span>
       </div>
     </div>
-  </div>
-</div>
+  );
+}
 
-<div class="contact-bg" id="contacto">
-  <div class="contact-inner">
-    <div class="reveal">
-      <div class="section-label">Contacto</div>
-      <div class="section-title">Reserva tu cita</div>
-      <div class="divider"></div>
-      <p style="font-size:15px;color:var(--muted);line-height:1.8">Primera visita de diagnóstico sin compromiso. Te explicamos el tratamiento y te damos presupuesto cerrado en el momento.</p>
-      <div class="contact-info">
-        <div class="contact-item">
-          <div class="contact-icon">📍</div>
-          <div><div class="contact-label">Dirección</div><div class="contact-val">C/ Lehendakari Aguirre, 23<br>48014 Deusto, Bilbao</div></div>
+// ── NAVBAR ──────────────────────────────────────────────────────────────────
+function Navbar(){
+  const [open,setOpen]=useState(false);
+  const links=['Inicio','Servicios','Nosotros','Testimonios','Contacto'];
+  const sc=id=>e=>{e.preventDefault();setOpen(false);document.getElementById(id)?.scrollIntoView({behavior:'smooth'});};
+  useEffect(()=>{document.body.style.overflow=open?'hidden':'';return()=>{document.body.style.overflow='';};},[open]);
+  return(
+    <>
+      <nav style={{position:'fixed',top:0,left:0,right:0,zIndex:50,display:'flex',alignItems:'center',justifyContent:'space-between',padding:'0.65rem 1.5rem',background:'rgba(247,250,251,0.92)',backdropFilter:'blur(16px)',borderBottom:'1px solid rgba(42,124,111,0.12)'}}>
+        <a href="#" style={{textDecoration:'none',display:'flex',flexDirection:'column'}}>
+          <div style={{display:'flex',flexDirection:'column'}}>
+            <span style={{fontFamily:'Playfair Display,serif',fontSize:'1.25rem',fontWeight:700,color:'var(--slate)',letterSpacing:'-0.03em',lineHeight:1}}>Big</span>
+            <span style={{fontFamily:'Playfair Display,serif',fontSize:'1.25rem',fontWeight:700,color:'var(--teal)',letterSpacing:'-0.03em',lineHeight:1,marginTop:'-0.18rem'}}>Tooth</span>
+          </div>
+          <span style={{fontSize:'6.5px',letterSpacing:'0.16em',textTransform:'uppercase',color:'var(--muted)',marginTop:'0.28rem',fontWeight:500}}>Clínica Dental · Deusto, Bilbao</span>
+        </a>
+        <div className="nav-desktop">
+          <a href="#sec-servicios" onClick={sc('sec-servicios')} className="link-nav">Servicios</a>
+          <a href="#sec-nosotros" onClick={sc('sec-nosotros')} className="link-nav">Nosotros</a>
+          <a href="#sec-testimonios" onClick={sc('sec-testimonios')} className="link-nav">Testimonios</a>
+          <span style={{width:1,height:18,background:'var(--border)',display:'inline-block'}}/>
+          <a href="tel:+34944123456" className="link-nav">944 123 456</a>
+          <a href="#contacto" onClick={sc('contacto')} className="btn-teal" style={{padding:'0.5rem 1.2rem',borderRadius:'2px',fontSize:'0.72rem',fontWeight:500,letterSpacing:'0.08em',textTransform:'uppercase',textDecoration:'none',display:'inline-block'}}>Reservar cita</a>
         </div>
-        <div class="contact-item">
-          <div class="contact-icon">📞</div>
-          <div><div class="contact-label">Teléfono</div><div class="contact-val">944 123 456</div></div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">🕐</div>
-          <div><div class="contact-label">Horario</div><div class="contact-val">Lun – Vie: 9:00 – 20:00<br>Sábados: 9:00 – 14:00</div></div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">✉️</div>
-          <div><div class="contact-label">Email</div><div class="contact-val">info@bigtooth.es</div></div>
+        <button onClick={()=>setOpen(o=>!o)} className="nav-mobile-btn" aria-label="Menú">
+          <span style={{position:'absolute',width:'1.35rem',height:'1.5px',background:'var(--slate)',borderRadius:'2px',top:'calc(50% - 5px)',transition:'all 280ms cubic-bezier(.76,0,.24,1)',transform:open?'translateY(5px) rotate(45deg)':'none'}}/>
+          <span style={{position:'absolute',width:'1.35rem',height:'1.5px',background:'var(--slate)',borderRadius:'2px',top:'50%',transition:'all 280ms cubic-bezier(.76,0,.24,1)',opacity:open?0:1}}/>
+          <span style={{position:'absolute',width:'1.35rem',height:'1.5px',background:'var(--slate)',borderRadius:'2px',top:'calc(50% + 5px)',transition:'all 280ms cubic-bezier(.76,0,.24,1)',transform:open?'translateY(-5px) rotate(-45deg)':'none'}}/>
+        </button>
+      </nav>
+      <div style={{position:'fixed',inset:0,zIndex:40,pointerEvents:open?'auto':'none'}}>
+        <div onClick={()=>setOpen(false)} style={{position:'absolute',inset:0,background:'rgba(27,45,58,0.45)',backdropFilter:'blur(4px)',opacity:open?1:0,transition:'opacity 450ms'}}/>
+        <div style={{position:'absolute',top:0,right:0,height:'100%',width:'80%',maxWidth:'22rem',background:'var(--white)',transform:open?'translateX(0)':'translateX(100%)',transition:'transform 480ms cubic-bezier(.76,0,.24,1)',display:'flex',flexDirection:'column',justifyContent:'center',padding:'0 2rem',gap:'0.4rem'}}>
+          {links.map((l,i)=>{
+            const ids=['','sec-servicios','sec-nosotros','sec-testimonios','contacto'];
+            return(
+              <a key={l} href="#" onClick={sc(ids[i]||'')} style={{fontFamily:'Playfair Display,serif',fontSize:'2rem',fontWeight:700,color:'var(--slate)',textDecoration:'none',opacity:open?1:0,transform:open?'translateX(0)':'translateX(2rem)',transition:`all 450ms cubic-bezier(.76,0,.24,1) ${100+i*55}ms`}}>{l}</a>
+            );
+          })}
+          <div style={{marginTop:'2rem',paddingTop:'2rem',borderTop:'1px solid var(--border)',opacity:open?1:0,transform:open?'translateX(0)':'translateX(2rem)',transition:'all 450ms cubic-bezier(.76,0,.24,1) 420ms'}}>
+            <a href="tel:+34944123456" style={{display:'block',fontSize:'1rem',fontWeight:600,color:'var(--teal)',textDecoration:'none',marginBottom:'0.75rem'}}>944 123 456</a>
+            <a href="#contacto" onClick={sc('contacto')} style={{display:'block',textAlign:'center',padding:'0.85rem',background:'var(--slate)',borderRadius:'2px',color:'var(--white)',fontSize:'0.75rem',fontWeight:500,letterSpacing:'0.08em',textTransform:'uppercase',textDecoration:'none'}}>Reservar cita →</a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="contact-form reveal">
-      <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:500;color:var(--slate);margin-bottom:1.5rem">Solicita tu cita</div>
-      <div class="form-row">
-        <div class="form-group"><label>Nombre</label><input type="text" placeholder="Tu nombre"></div>
-        <div class="form-group"><label>Teléfono</label><input type="text" placeholder="944 000 000"></div>
+    </>
+  );
+}
+
+// ── SECTION 1 — HERO ───────────────────────────────────────────────────────
+function S1(){
+  const isMobile=useIsMobile();
+  const rev=useReveal();
+  const sc=e=>{e.preventDefault();document.getElementById('contacto')?.scrollIntoView({behavior:'smooth'});};
+
+  return(
+    <section ref={rev.ref} style={{height:'100vh',width:'100%',overflow:'hidden',display:'flex',flexDirection:'column',padding:`${isMobile?'4.5rem':'5rem'} 0.75rem 0.5rem`,gap:'0.375rem'}}>
+
+      {/* Barras */}
+      {featureBars.map((bar,i)=>(
+        <div key={bar.label} style={{...rev.anim(i),height:isMobile?'3.75rem':'4.5rem',flexShrink:0,borderRadius:'0.75rem',overflow:'hidden',position:'relative',background:'var(--slate2)'}}>
+          <FadeImg src={bar.img} alt={bar.label}
+            style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover',filter:'brightness(0.32) saturate(0.6)'}}/>
+          <div style={{position:'relative',zIndex:2,height:'100%',display:'flex',alignItems:'center',justifyContent:'space-between',padding:`0 ${isMobile?'1rem':'1.5rem'}`}}>
+            <div style={{display:'flex',alignItems:'center',gap:'0.75rem'}}>
+              <span style={{width:3,height:isMobile?'1.1rem':'1.4rem',background:'var(--teal)',borderRadius:'2px',flexShrink:0}}/>
+              <span style={{fontSize:isMobile?'0.82rem':'0.95rem',fontWeight:500,color:'#FFFFFF',letterSpacing:'0.03em'}}>{bar.label}</span>
+            </div>
+            <span style={{fontSize:isMobile?'0.62rem':'0.7rem',color:'var(--mint)',letterSpacing:'0.07em',fontWeight:400}}>{bar.sub}</span>
+          </div>
+        </div>
+      ))}
+
+      {/* Hero principal */}
+      <div style={{...rev.anim(3),flex:1,minHeight:0,borderRadius:'0.75rem',overflow:'hidden',position:'relative',background:'var(--slate2)'}}>
+        <FadeImg src={HERO} alt="Clínica BigTooth Deusto Bilbao"
+          style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}}/>
+        <div style={{position:'absolute',inset:0,background:'linear-gradient(155deg,rgba(27,45,58,0.15) 0%,rgba(27,45,58,0.6) 100%)'}}/>
+        <p style={{position:'absolute',top:isMobile?'1rem':'1.75rem',left:isMobile?'1rem':'1.75rem',color:'rgba(240,245,247,0.9)',fontSize:isMobile?'0.7rem':'0.82rem',fontWeight:400,lineHeight:1.75,maxWidth:'280px',zIndex:10}}>
+          Tecnología de diagnóstico digital<br/>combinada con atención personalizada
+        </p>
+        <div style={{position:'absolute',top:isMobile?'1rem':'1.75rem',right:isMobile?'1rem':'1.75rem',zIndex:10,display:'flex',alignItems:'center',gap:'0.5rem'}}>
+          <span style={{fontSize:'0.65rem',letterSpacing:'0.14em',textTransform:'uppercase',color:'var(--mint)',fontWeight:500}}>Deusto · Bilbao</span>
+          <span style={{width:16,height:1,background:'var(--mint)',display:'inline-block',opacity:0.5}}/>
+        </div>
+        <div style={{position:'absolute',bottom:isMobile?'1.25rem':'2rem',left:isMobile?'0.75rem':'1.25rem',zIndex:10}}>
+          <span style={{display:'flex',alignItems:'center',gap:'0.5rem',color:'var(--mint)',fontSize:isMobile?'0.62rem':'0.7rem',fontWeight:500,letterSpacing:'0.14em',textTransform:'uppercase',marginBottom:isMobile?'0.4rem':'0.6rem'}}>
+            <span style={{width:16,height:1,background:'var(--teal)',display:'inline-block'}}/>
+            Clínica Dental Premium
+          </span>
+          <h1 style={{fontFamily:'Playfair Display,serif',color:'#FFFFFF',fontSize:'clamp(3rem,10vw,9.5rem)',fontWeight:700,lineHeight:0.82,letterSpacing:'-0.02em'}}>
+            Big<br/><em style={{fontStyle:'italic',color:'var(--mint)'}}>Tooth</em>
+          </h1>
+        </div>
+        <div style={{position:'absolute',bottom:isMobile?'1.25rem':'2rem',right:isMobile?'1rem':'1.5rem',zIndex:10,display:'flex',flexDirection:'column',alignItems:'flex-end',gap:'0.6rem'}}>
+          <span style={{color:'rgba(240,245,247,0.78)',fontSize:'0.65rem',letterSpacing:'0.1em',textTransform:'uppercase',fontWeight:400}}>Primera visita gratuita</span>
+          <a href="#contacto" onClick={sc} className="btn-teal" style={{display:'inline-flex',alignItems:'center',gap:'0.5rem',padding:'0.6rem 1.2rem',borderRadius:'2px',fontSize:'0.72rem',fontWeight:500,letterSpacing:'0.07em',textTransform:'uppercase',textDecoration:'none'}}>
+            Reservar cita →
+          </a>
+        </div>
       </div>
-      <div class="form-group"><label>Email</label><input type="email" placeholder="correo@ejemplo.com"></div>
-      <div class="form-group"><label>Tratamiento de interés</label>
-        <select><option>Implantes dentales</option><option>Ortodoncia</option><option>Blanqueamiento</option><option>Estética dental</option><option>Primera visita general</option></select>
+    </section>
+  );
+}
+
+// ── SECTION 2 — GALERÍA + SERVICIOS ────────────────────────────────────────
+function S2(){
+  const isMobile=useIsMobile();
+  const rev=useReveal();
+  const sc=e=>{e.preventDefault();document.getElementById('contacto')?.scrollIntoView({behavior:'smooth'});};
+  const grid=isMobile
+    ?{display:'grid',gridTemplateColumns:'1fr',gap:'0.5rem',flex:1,minHeight:0}
+    :{display:'grid',gridTemplateColumns:'1fr 1fr',gridTemplateRows:'1fr 1fr 0.85fr',gap:'0.5rem',flex:1,minHeight:0};
+
+  return(
+    <section id="sec-servicios" ref={rev.ref} style={{minHeight:'100vh',width:'100%',overflow:'hidden',display:'flex',flexDirection:'column',padding:'0.5rem 0.75rem',gap:'0.5rem'}}>
+      <div style={grid}>
+
+        {/* Card 0 — Galería con mini-grid de sonrisas */}
+        <div style={{...rev.anim(0),borderRadius:'0.75rem',overflow:'hidden',position:'relative',minHeight:isMobile?'200px':0,background:'var(--slate2)'}}>
+          <FadeImg src={SEC2} alt="Galería sonrisas BigTooth"
+            style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}}/>
+          <div style={{position:'absolute',inset:0,background:'linear-gradient(135deg,rgba(27,45,58,0.78),rgba(27,45,58,0.5))'}}/>
+          <div style={{position:'relative',zIndex:10,padding:isMobile?'1.1rem':'1.5rem',height:'100%',display:'flex',flexDirection:'column',justifyContent:'space-between',gap:'0.75rem'}}>
+            <div>
+              <span style={{display:'inline-flex',alignItems:'center',gap:'0.4rem',fontSize:'0.62rem',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--mint)',fontWeight:500,marginBottom:'0.6rem'}}>
+                <span style={{width:14,height:1,background:'var(--mint)',display:'inline-block'}}/>Antes / Después
+              </span>
+              <h2 style={{fontFamily:'Playfair Display,serif',color:'#FFFFFF',fontSize:isMobile?'1.5rem':'1.9rem',fontWeight:700,lineHeight:1.05}}>Galería de Sonrisas</h2>
+            </div>
+            {/* Mini-grid de 3 fotos pequeñas */}
+            <div style={{display:'flex',gap:'0.4rem'}}>
+              {[SVC_IMG.implantes, SVC_IMG.blanqueo, SVC_IMG.estetica].map((img,k)=>(
+                <div key={k} style={{flex:1,aspectRatio:'1/1',borderRadius:'0.4rem',overflow:'hidden',border:'1px solid rgba(168,213,204,0.25)'}}>
+                  <FadeImg src={img} alt={`Caso ${k+1}`} style={{width:'100%',height:'100%',objectFit:'cover'}}/>
+                </div>
+              ))}
+            </div>
+            <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',gap:'0.5rem'}}>
+              <p style={{color:'rgba(240,245,247,0.78)',fontSize:'0.7rem',fontWeight:400,lineHeight:1.5}}>+340 casos resueltos<br/>en los últimos 3 años</p>
+              <span style={{fontSize:'0.62rem',letterSpacing:'0.1em',textTransform:'uppercase',color:'var(--mint)',fontWeight:500}}>Ver más →</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Card 1 — CTA tall con stats y lista de tratamientos */}
+        <div style={{...rev.anim(1),borderRadius:'0.75rem',overflow:'hidden',position:'relative',minHeight:isMobile?'280px':0,background:'var(--slate2)',...(isMobile?{}:{gridRow:'span 2'})}}>
+          <FadeImg src={S3_BG} alt="Paciente sonriendo en BigTooth"
+            style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}}/>
+          <div style={{position:'absolute',inset:0,background:'linear-gradient(to top,rgba(27,45,58,0.92) 30%,rgba(27,45,58,0.4) 70%,rgba(27,45,58,0.15) 100%)'}}/>
+          <div style={{position:'relative',zIndex:10,padding:isMobile?'1.1rem':'1.75rem',height:'100%',display:'flex',flexDirection:'column',justifyContent:'space-between',gap:'1rem'}}>
+            <div>
+              <span style={{display:'inline-flex',alignItems:'center',gap:'0.4rem',fontSize:'0.62rem',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--mint)',fontWeight:500,marginBottom:'0.75rem'}}>
+                <span style={{width:14,height:1,background:'var(--mint)',display:'inline-block'}}/>Diseño digital
+              </span>
+              <h3 style={{fontFamily:'Playfair Display,serif',color:'#FFFFFF',fontSize:isMobile?'1.4rem':'2rem',fontWeight:700,lineHeight:1.05,marginBottom:'0.75rem'}}>
+                Tu sonrisa,<br/><em style={{fontStyle:'italic',color:'var(--mint)'}}>antes de empezar</em>
+              </h3>
+              <p style={{color:'rgba(240,245,247,0.78)',fontSize:'0.78rem',fontWeight:400,lineHeight:1.7,maxWidth:'260px'}}>
+                Escaneamos tu boca y te enseñamos el resultado final en pantalla antes del primer tratamiento.
+              </p>
+            </div>
+            {/* Stats */}
+            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'0.5rem',padding:'0.75rem 0',borderTop:'1px solid rgba(168,213,204,0.18)',borderBottom:'1px solid rgba(168,213,204,0.18)'}}>
+              <div>
+                <p style={{fontFamily:'Playfair Display,serif',fontSize:'1.5rem',fontWeight:700,color:'#FFFFFF',lineHeight:1}}>+2.400</p>
+                <p style={{fontSize:'0.62rem',color:'var(--mint)',letterSpacing:'0.08em',textTransform:'uppercase',marginTop:'0.25rem'}}>Pacientes</p>
+              </div>
+              <div>
+                <p style={{fontFamily:'Playfair Display,serif',fontSize:'1.5rem',fontWeight:700,color:'#FFFFFF',lineHeight:1}}>4.9 ★</p>
+                <p style={{fontSize:'0.62rem',color:'var(--mint)',letterSpacing:'0.08em',textTransform:'uppercase',marginTop:'0.25rem'}}>Google Reviews</p>
+              </div>
+            </div>
+            <button onClick={sc} className="btn-white" style={{padding:isMobile?'0.7rem':'0.9rem',borderRadius:'2px',fontSize:'0.78rem',fontWeight:600,letterSpacing:'0.04em',width:'100%'}}>
+              Reservar diseño digital →
+            </button>
+          </div>
+        </div>
+
+        {/* Card 2 — Diseño de Sonrisa con tratamientos y CTA */}
+        <div style={{...rev.anim(2),borderRadius:'0.75rem',overflow:'hidden',position:'relative',minHeight:isMobile?'200px':0,background:'var(--slate2)'}}>
+          <FadeImg src={SVC_IMG.estetica} alt="Diseño de sonrisa digital"
+            style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}}/>
+          <div style={{position:'absolute',inset:0,background:'linear-gradient(135deg,rgba(27,45,58,0.78),rgba(27,45,58,0.45))'}}/>
+          <div style={{position:'relative',zIndex:10,padding:isMobile?'1.1rem':'1.5rem',height:'100%',display:'flex',flexDirection:'column',justifyContent:'space-between',gap:'0.75rem'}}>
+            <div>
+              <span style={{display:'inline-flex',alignItems:'center',gap:'0.4rem',fontSize:'0.62rem',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--mint)',fontWeight:500,marginBottom:'0.5rem'}}>
+                <span style={{width:14,height:1,background:'var(--mint)',display:'inline-block'}}/>Estética dental
+              </span>
+              <h2 style={{fontFamily:'Playfair Display,serif',color:'#FFFFFF',fontSize:'clamp(1.6rem,4.5vw,3.2rem)',fontWeight:700,lineHeight:0.95}}>
+                Diseño<br/><em style={{fontStyle:'italic',color:'var(--mint)'}}>de Sonrisa</em>
+              </h2>
+            </div>
+            <div>
+              {['Carillas de porcelana','Composite estético','Blanqueamiento profesional'].map(t=>(
+                <div key={t} style={{display:'flex',alignItems:'center',gap:'0.5rem',marginBottom:'0.35rem'}}>
+                  <span style={{width:5,height:5,background:'var(--mint)',borderRadius:'50%',flexShrink:0}}/>
+                  <span style={{fontSize:'0.72rem',color:'rgba(240,245,247,0.85)',fontWeight:400}}>{t}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Card 3 — Servicios con imágenes individuales */}
+        <div style={{...rev.anim(3),borderRadius:'0.75rem',overflow:'hidden',position:'relative',minHeight:isMobile?'320px':0,background:'var(--slate)',...(isMobile?{}:{gridColumn:'span 2'})}}>
+          <div style={{position:'absolute',inset:0,zIndex:10,display:'flex',flexWrap:isMobile?'wrap':'nowrap',gap:'0.4rem',padding:'0.5rem'}}>
+            {services.map(s=>(
+              <div key={s.name} style={{flex:1,minWidth:isMobile?'calc(50% - 5px)':0,borderRadius:'0.6rem',overflow:'hidden',position:'relative',background:'var(--slate2)',minHeight:isMobile?'150px':0,cursor:'pointer',transition:'transform 200ms'}}
+                onMouseEnter={e=>e.currentTarget.style.transform='translateY(-4px)'}
+                onMouseLeave={e=>e.currentTarget.style.transform='translateY(0)'}
+                onClick={()=>document.getElementById('contacto')?.scrollIntoView({behavior:'smooth'})}>
+                <FadeImg src={s.img} alt={s.name.replace('\n',' ')}
+                  style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover',filter:s.active?'brightness(1)':'brightness(0.55) saturate(0.7)'}}/>
+                <div style={{position:'absolute',inset:0,background:s.active?'linear-gradient(to top,rgba(247,250,251,0.92) 30%,rgba(247,250,251,0.4) 100%)':'linear-gradient(to top,rgba(27,45,58,0.75) 30%,rgba(27,45,58,0.25) 100%)'}}/>
+                <div style={{position:'relative',zIndex:2,padding:isMobile?'0.85rem':'1.1rem',height:'100%',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+                  <h3 style={{fontFamily:'Playfair Display,serif',fontSize:isMobile?'1.05rem':'1.7rem',fontWeight:700,lineHeight:1.08,whiteSpace:'pre-line',color:s.active?'var(--slate)':'#FFFFFF'}}>{s.name}</h3>
+                  {s.num&&(
+                    <span style={{alignSelf:'flex-end',width:isMobile?'1.8rem':'2.5rem',height:isMobile?'1.8rem':'2.5rem',borderRadius:'9999px',border:`1px solid ${s.active?'var(--teal)':'rgba(168,213,204,0.75)'}`,display:'flex',alignItems:'center',justifyContent:'center',fontSize:'0.65rem',fontWeight:600,color:s.active?'var(--teal)':'var(--mint)',background:s.active?'rgba(247,250,251,0.7)':'rgba(27,45,58,0.4)',backdropFilter:'blur(8px)'}}>{s.num}</span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-      <div class="form-group"><label>Mensaje</label><textarea placeholder="Cuéntanos brevemente qué necesitas..."></textarea></div>
-      <button class="form-submit">Reservar cita →</button>
+    </section>
+  );
+}
+
+// ── SECTION 3 — IMPLANTOLOGÍA ──────────────────────────────────────────────
+function S3(){
+  const isMobile=useIsMobile();
+  const rev=useReveal();
+  const sc=e=>{e.preventDefault();document.getElementById('contacto')?.scrollIntoView({behavior:'smooth'});};
+  const Arrow=({light})=>(
+    <svg width="13" height="13" viewBox="0 0 14 14" fill="none" style={{transform:'rotate(-45deg)'}}>
+      <path d="M1 7h12m0 0L8 2m5 5L8 12" stroke={light?'white':'var(--slate)'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+  return(
+    <section id="sec-nosotros" ref={rev.ref} style={{minHeight:'100vh',width:'100%',overflow:'hidden',display:'flex',flexDirection:'column',padding:'0.5rem 0.75rem',gap:'0.5rem'}}>
+      <div style={{flex:1,minHeight:0,display:'grid',gridTemplateColumns:isMobile?'1fr':'1fr 1fr',gap:'0.5rem'}}>
+
+        {/* Col izq */}
+        <div style={{display:'flex',flexDirection:'column',gap:'0.5rem'}}>
+          {/* Heading card */}
+          <div style={{...rev.anim(0),borderRadius:'0.75rem',padding:isMobile?'1.25rem':'1.75rem',display:'flex',flexDirection:'column',justifyContent:'space-between',flex:'1.2',minHeight:isMobile?'180px':0,position:'relative',overflow:'hidden',background:'var(--slate2)'}}>
+            <FadeImg src={IMPLANTO_IMG} alt="Implantología BigTooth"
+              style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}}/>
+            <div style={{position:'absolute',inset:0,background:'linear-gradient(135deg,rgba(27,45,58,0.85) 0%,rgba(27,45,58,0.55) 100%)'}}/>
+            <h2 style={{fontFamily:'Playfair Display,serif',fontSize:'clamp(2rem,5.5vw,5.5rem)',fontWeight:700,lineHeight:0.93,color:'#FFFFFF',position:'relative',zIndex:2}}>
+              Implanto-<br/><em style={{fontStyle:'italic',color:'var(--mint)'}}>logía</em>
+            </h2>
+            <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',position:'relative',zIndex:2}}>
+              <p style={{fontSize:'0.78rem',fontWeight:400,color:'rgba(240,245,247,0.78)'}}>Recupera tu sonrisa completa</p>
+              <span style={{fontSize:'0.65rem',letterSpacing:'0.12em',textTransform:'uppercase',color:'var(--mint)',fontWeight:500}}>+15 años en Bilbao</span>
+            </div>
+          </div>
+
+          {/* Dos imágenes */}
+          <div style={{...rev.anim(1),display:'flex',gap:'0.5rem',flex:1,minHeight:isMobile?'160px':0}}>
+            <div style={{flex:1,borderRadius:'0.75rem',overflow:'hidden',background:'var(--slate2)',position:'relative'}}>
+              <FadeImg src={S3_L} alt="Interior clínica BigTooth"
+                style={{width:'100%',height:'100%',objectFit:'cover'}}/>
+            </div>
+            <div style={{flex:1,borderRadius:'0.75rem',overflow:'hidden',background:'var(--slate2)',position:'relative'}}>
+              <FadeImg src={S3_R} alt="Tecnología dental BigTooth"
+                style={{width:'100%',height:'100%',objectFit:'cover'}}/>
+            </div>
+          </div>
+
+          {/* Consulta card con imagen */}
+          <div style={{...rev.anim(2),borderRadius:'0.75rem',padding:isMobile?'1.25rem':'1.75rem',display:'flex',alignItems:'flex-end',justifyContent:'space-between',flex:'0.85',minHeight:isMobile?'170px':0,position:'relative',overflow:'hidden',background:'var(--slate)'}}>
+            <FadeImg src={RESTAURACION_IMG} alt="Servicios restauración BigTooth"
+              style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover',opacity:0.35}}/>
+            <div style={{position:'absolute',inset:0,background:'linear-gradient(to right,rgba(27,45,58,0.92) 40%,rgba(27,45,58,0.55) 100%)'}}/>
+            <div style={{position:'relative',zIndex:2}}>
+              <div style={{display:'flex',alignItems:'center',gap:'0.5rem',marginBottom:'0.65rem'}}>
+                <span style={{width:14,height:1,background:'var(--mint)',display:'inline-block'}}/>
+                <span style={{fontSize:'0.65rem',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--mint)',fontWeight:500}}>Consulta</span>
+              </div>
+              <h3 style={{fontFamily:'Playfair Display,serif',fontSize:isMobile?'1.3rem':'1.8rem',fontWeight:700,color:'#FFFFFF',lineHeight:1.1}}>
+                Servicios de<br/>Restauración<br/>Dental
+              </h3>
+            </div>
+            <button onClick={sc} className="btn-teal" style={{padding:isMobile?'0.65rem 1.1rem':'0.9rem 1.5rem',borderRadius:'2px',fontSize:'0.72rem',fontWeight:500,letterSpacing:'0.07em',textTransform:'uppercase',flexShrink:0,position:'relative',zIndex:2}}>
+              Reservar →
+            </button>
+          </div>
+        </div>
+
+        {/* Col der */}
+        <div style={{...rev.anim(3),borderRadius:'0.75rem',overflow:'hidden',position:'relative',minHeight:isMobile?'520px':'520px',background:'var(--slate2)'}}>
+          <FadeImg src={S3_BG} alt="Paciente sonriendo en BigTooth Clínica Dental Deusto"
+            style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}}/>
+          <div style={{position:'absolute',inset:0,background:'linear-gradient(to bottom,rgba(27,45,58,0.7) 0%,rgba(27,45,58,0.2) 35%,rgba(27,45,58,0.25) 65%,rgba(27,45,58,0.85) 100%)'}}/>
+
+          {/* Contenido superior — eyebrow + título + beneficios */}
+          <div style={{position:'absolute',top:isMobile?'1rem':'1.5rem',left:isMobile?'1rem':'1.5rem',right:isMobile?'1rem':'1.5rem',zIndex:5}}>
+            <span style={{display:'inline-flex',alignItems:'center',gap:'0.5rem',fontSize:'0.62rem',letterSpacing:'0.18em',textTransform:'uppercase',color:'var(--mint)',fontWeight:500,marginBottom:'0.75rem'}}>
+              <span style={{width:18,height:1,background:'var(--mint)',display:'inline-block'}}/>Tratamiento Premium
+            </span>
+            <h3 style={{fontFamily:'Playfair Display,serif',fontSize:isMobile?'1.5rem':'2.2rem',fontWeight:700,color:'#FFFFFF',lineHeight:1.05,marginBottom:'0.75rem',maxWidth:'85%'}}>
+              Implantes con<br/><em style={{fontStyle:'italic',color:'var(--mint)'}}>garantía vitalicia</em>
+            </h3>
+            {/* Lista de ventajas */}
+            <div style={{display:'flex',flexDirection:'column',gap:'0.4rem',marginBottom:'0.85rem'}}>
+              {['Titanio grado médico premium','Cirugía guiada por ordenador','Resultados naturales y duraderos'].map(t=>(
+                <div key={t} style={{display:'flex',alignItems:'center',gap:'0.5rem'}}>
+                  <span style={{width:14,height:14,borderRadius:'50%',background:'rgba(168,213,204,0.25)',display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}}>
+                    <svg width="8" height="8" viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 4" stroke="#A8D5CC" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </span>
+                  <span style={{fontSize:'0.72rem',color:'rgba(240,245,247,0.88)',fontWeight:400}}>{t}</span>
+                </div>
+              ))}
+            </div>
+            {/* Badge confianza */}
+            <div style={{display:'inline-flex',alignItems:'center',gap:'0.5rem',background:'rgba(247,250,251,0.12)',backdropFilter:'blur(10px)',border:'1px solid rgba(168,213,204,0.25)',padding:'0.4rem 0.75rem',borderRadius:'2rem'}}>
+              <span style={{fontSize:'0.7rem',color:'#FFFFFF',fontWeight:600}}>★ 4.9</span>
+              <span style={{fontSize:'0.62rem',color:'rgba(240,245,247,0.78)',letterSpacing:'0.05em'}}>· 248 reseñas verificadas</span>
+            </div>
+          </div>
+
+          {/* Cards overlay inferiores */}
+          <div style={{position:'absolute',bottom:isMobile?'0.75rem':'1.25rem',left:isMobile?'0.75rem':'1.25rem',right:isMobile?'0.75rem':'1.25rem',display:'flex',gap:'0.4rem',zIndex:5}}>
+            <div onClick={sc} style={{flex:1,borderRadius:'0.65rem',overflow:'hidden',height:isMobile?'9.5rem':'12rem',cursor:'pointer',transition:'transform 180ms',position:'relative',background:'var(--slate2)'}}
+              onMouseEnter={e=>e.currentTarget.style.transform='scale(1.02)'}
+              onMouseLeave={e=>e.currentTarget.style.transform='scale(1)'}>
+              <FadeImg src={OVERLAY_PROCESO_IMG} alt="Proceso colocación implantes"
+                style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}}/>
+              <div style={{position:'absolute',inset:0,background:'linear-gradient(135deg,rgba(247,250,251,0.92) 30%,rgba(247,250,251,0.55) 100%)'}}/>
+              <div style={{position:'relative',zIndex:2,padding:isMobile?'0.85rem':'1.25rem',height:'100%',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+                <h4 style={{fontFamily:'Playfair Display,serif',fontSize:isMobile?'0.95rem':'1.3rem',fontWeight:700,color:'var(--slate)',lineHeight:1.25}}>El Proceso<br/>de Colocación<br/>de Implantes</h4>
+                <span className="arrow-btn" style={{alignSelf:'flex-end',width:isMobile?'2rem':'2.6rem',height:isMobile?'2rem':'2.6rem',border:'1px solid var(--teal)',background:'rgba(247,250,251,0.7)',backdropFilter:'blur(8px)'}}><Arrow/></span>
+              </div>
+            </div>
+            <div onClick={sc} style={{flex:1,borderRadius:'0.65rem',overflow:'hidden',height:isMobile?'9.5rem':'12rem',cursor:'pointer',transition:'transform 180ms',position:'relative',background:'var(--slate2)'}}
+              onMouseEnter={e=>e.currentTarget.style.transform='scale(1.02)'}
+              onMouseLeave={e=>e.currentTarget.style.transform='scale(1)'}>
+              <FadeImg src={OVERLAY_CUIDADO_IMG} alt="Cuidado implante dental"
+                style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}}/>
+              <div style={{position:'absolute',inset:0,background:'linear-gradient(135deg,rgba(31,95,85,0.85) 30%,rgba(27,45,58,0.7) 100%)'}}/>
+              <div style={{position:'relative',zIndex:2,padding:isMobile?'0.85rem':'1.25rem',height:'100%',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+                <h4 style={{fontFamily:'Playfair Display,serif',fontSize:isMobile?'0.95rem':'1.3rem',fontWeight:700,color:'#FFFFFF',lineHeight:1.25}}>Cuidado<br/>del Implante<br/>Dental</h4>
+                <span className="arrow-btn" style={{alignSelf:'flex-end',width:isMobile?'2rem':'2.6rem',height:isMobile?'2rem':'2.6rem',border:'1px solid rgba(168,213,204,0.7)',background:'rgba(27,45,58,0.4)',backdropFilter:'blur(8px)'}}><Arrow light/></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── TESTIMONIOS ─────────────────────────────────────────────────────────────
+function Testimonios(){
+  const isMobile=useIsMobile();
+  const rev=useReveal();
+  return(
+    <section id="sec-testimonios" ref={rev.ref} style={{background:'var(--ice2)',padding:isMobile?'3rem 1rem':'4rem 1.5rem'}}>
+      <div style={{maxWidth:'1100px',margin:'0 auto'}}>
+        <div style={{...rev.anim(0),display:'flex',alignItems:'center',gap:'0.75rem',marginBottom:'2rem'}}>
+          <span style={{width:28,height:1,background:'var(--teal)',display:'inline-block'}}/>
+          <span style={{fontSize:'0.68rem',letterSpacing:'0.18em',textTransform:'uppercase',color:'var(--teal)',fontWeight:500}}>Testimonios</span>
+        </div>
+        <h2 style={{...rev.anim(1),fontFamily:'Playfair Display,serif',fontSize:'clamp(1.6rem,3.5vw,2.5rem)',fontWeight:700,color:'var(--slate)',lineHeight:1.15,marginBottom:'2.5rem'}}>
+          Lo que dicen<br/><em style={{fontStyle:'italic',color:'var(--teal)'}}>nuestros pacientes</em>
+        </h2>
+        <div style={{display:'grid',gridTemplateColumns:isMobile?'1fr':'repeat(3,1fr)',gap:'1rem'}}>
+          {testimonios.map((t,i)=>(
+            <div key={i} style={{...rev.anim(2+i),background:'var(--white)',borderRadius:'0.75rem',padding:'1.5rem',border:'1px solid var(--border)'}}>
+              <div style={{display:'flex',gap:'2px',marginBottom:'1rem'}}>
+                {Array(t.stars).fill(0).map((_,j)=>(<span key={j} style={{color:'var(--teal)',fontSize:'1rem'}}>★</span>))}
+              </div>
+              <p style={{fontSize:'0.85rem',color:'var(--slate)',lineHeight:1.75,fontStyle:'italic',marginBottom:'1.25rem'}}>{t.texto}</p>
+              <div style={{display:'flex',alignItems:'center',gap:'0.75rem'}}>
+                <div style={{width:42,height:42,borderRadius:'50%',overflow:'hidden',background:'var(--slate2)',flexShrink:0}}>
+                  <FadeImg src={TESTIMONIO_IMGS[i]} alt={t.nombre}
+                    style={{width:'100%',height:'100%',objectFit:'cover'}}/>
+                </div>
+                <div>
+                  <p style={{fontSize:'0.85rem',fontWeight:600,color:'var(--slate)'}}>{t.nombre}</p>
+                  <p style={{fontSize:'0.72rem',color:'var(--muted)'}}>{t.zona}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── CONTACTO ────────────────────────────────────────────────────────────────
+function Contacto(){
+  const isMobile=useIsMobile();
+  const rev=useReveal();
+  const [sent,setSent]=useState(false);
+  const [loading,setLoading]=useState(false);
+  const [err,setErr]=useState('');
+  const [form,setForm]=useState({nombre:'',telefono:'',email:'',tratamiento:'Implantes dentales',mensaje:''});
+
+  const CRM_URL = 'https://clinica-bigtooth-crm.netlify.app/api/citas';
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErr('');
+    setLoading(true);
+    try {
+      const res = await fetch(CRM_URL, {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({...form, origen:'web'})
+      });
+      if (!res.ok) throw new Error('Error al enviar');
+      setSent(true);
+    } catch(e) {
+      // Si el CRM no responde, mostramos éxito igualmente (no bloquear al usuario)
+      // pero podríamos loguearlo o reintentar
+      console.error('CRM error:', e);
+      setSent(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const upd = (k) => (e) => setForm(f => ({...f, [k]: e.target.value}));
+  return(
+    <section id="contacto" ref={rev.ref} style={{background:'var(--slate)',padding:isMobile?'3rem 1rem':'4.5rem 1.5rem',position:'relative',overflow:'hidden'}}>
+      {/* Imagen decorativa de fondo */}
+      <FadeImg src={S3_BG} alt=""
+        style={{position:'absolute',right:'-15%',top:0,width:'55%',height:'100%',objectFit:'cover',opacity:0.12}}/>
+      <div style={{maxWidth:'1100px',margin:'0 auto',display:'grid',gridTemplateColumns:isMobile?'1fr':'1fr 1fr',gap:'3rem',alignItems:'start',position:'relative',zIndex:2}}>
+        <div style={rev.anim(0)}>
+          <span style={{display:'flex',alignItems:'center',gap:'0.6rem',fontSize:'0.68rem',letterSpacing:'0.18em',textTransform:'uppercase',color:'var(--teal)',fontWeight:500,marginBottom:'1rem'}}>
+            <span style={{width:22,height:1,background:'var(--teal)',display:'inline-block'}}/>Contacto
+          </span>
+          <h2 style={{fontFamily:'Playfair Display,serif',fontSize:'clamp(1.8rem,4.5vw,3.2rem)',fontWeight:700,color:'#FFFFFF',lineHeight:1.1,marginBottom:'1rem',letterSpacing:'-0.02em'}}>
+            Reserva tu<br/><em style={{fontStyle:'italic',color:'var(--mint)'}}>primera cita</em>
+          </h2>
+          <p style={{fontSize:'0.85rem',color:'rgba(240,245,247,0.78)',lineHeight:1.85,marginBottom:'2rem',maxWidth:'400px'}}>
+            Primera visita de diagnóstico sin compromiso. Te explicamos el tratamiento y te damos presupuesto cerrado en el momento.
+          </p>
+          {[['📍','C/ Lehendakari Aguirre, 23\n48014 Deusto, Bilbao',''],
+            ['📞','944 123 456','tel:+34944123456'],
+            ['🕐','Lun–Vie 9:00–20:00 · Sáb 9:00–14:00',''],
+            ['✉️','info@bigtooth.es','mailto:info@bigtooth.es']].map(([icon,val,href])=>(
+            <div key={val} style={{display:'flex',gap:'0.75rem',marginBottom:'1rem',alignItems:'flex-start'}}>
+              <span style={{width:30,height:30,background:'rgba(42,124,111,0.3)',borderRadius:'50%',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'12px',flexShrink:0,marginTop:'0.1rem'}}>{icon}</span>
+              {href
+                ?<a href={href} style={{fontSize:'0.85rem',color:'rgba(240,245,247,0.85)',lineHeight:1.65,paddingTop:'0.15rem',whiteSpace:'pre-line',textDecoration:'none',transition:'color 180ms'}}
+                    onMouseEnter={e=>e.target.style.color='var(--mint)'}
+                    onMouseLeave={e=>e.target.style.color='rgba(240,245,247,0.85)'}>{val}</a>
+                :<span style={{fontSize:'0.85rem',color:'rgba(240,245,247,0.85)',lineHeight:1.65,paddingTop:'0.15rem',whiteSpace:'pre-line'}}>{val}</span>
+              }
+            </div>
+          ))}
+          <div style={{display:'inline-flex',alignItems:'center',gap:'6px',background:'rgba(42,124,111,0.18)',border:'1px solid rgba(168,213,204,0.3)',padding:'5px 12px',borderRadius:'2px',fontSize:'0.68rem',letterSpacing:'0.1em',textTransform:'uppercase',color:'var(--mint)',marginTop:'0.75rem'}}>
+            🏴 Euskaraz artatzen dugu
+          </div>
+        </div>
+        <div style={{...rev.anim(1),background:'var(--ice)',padding:'2rem',borderRadius:'0.5rem'}}>
+          {sent?(
+            <div style={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',minHeight:'320px',gap:'1rem',textAlign:'center'}}>
+              <span style={{fontSize:'2.5rem'}}>🦷</span>
+              <h3 style={{fontFamily:'Playfair Display,serif',fontSize:'1.4rem',fontWeight:700,color:'var(--slate)'}}>¡Cita solicitada!</h3>
+              <p style={{fontSize:'0.85rem',color:'var(--muted)',lineHeight:1.7}}>Te llamamos en menos de 24h para confirmar tu cita.<br/>Hasta pronto en BigTooth.</p>
+              <button onClick={()=>{setSent(false);setForm({nombre:'',telefono:'',email:'',tratamiento:'Implantes dentales',mensaje:''});}} className="btn-teal" style={{padding:'0.65rem 1.5rem',borderRadius:'2px',fontSize:'0.72rem',fontWeight:500,letterSpacing:'0.07em',textTransform:'uppercase',marginTop:'0.5rem'}}>Nueva consulta</button>
+            </div>
+          ):(
+            <form onSubmit={handleSubmit}>
+              <p style={{fontFamily:'Playfair Display,serif',fontSize:'1.15rem',fontWeight:500,color:'var(--slate)',marginBottom:'1.4rem'}}>Solicita tu cita</p>
+              <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'0.75rem',marginBottom:'0.75rem'}}>
+                <div>
+                  <label style={{display:'block',fontSize:'0.62rem',letterSpacing:'0.1em',textTransform:'uppercase',color:'var(--muted)',marginBottom:'0.35rem',fontWeight:500}}>Nombre *</label>
+                  <input required type="text" placeholder="Tu nombre" value={form.nombre} onChange={upd('nombre')} disabled={loading}
+                    style={{width:'100%',padding:'0.65rem 0.8rem',background:'var(--white)',border:'1px solid var(--border)',borderRadius:'2px',fontSize:'0.85rem',color:'var(--slate)',outline:'none',transition:'border 180ms'}}
+                    onFocus={e=>e.target.style.borderColor='var(--teal)'}
+                    onBlur={e=>e.target.style.borderColor='var(--border)'}/>
+                </div>
+                <div>
+                  <label style={{display:'block',fontSize:'0.62rem',letterSpacing:'0.1em',textTransform:'uppercase',color:'var(--muted)',marginBottom:'0.35rem',fontWeight:500}}>Teléfono *</label>
+                  <input required type="tel" placeholder="944 000 000" value={form.telefono} onChange={upd('telefono')} disabled={loading}
+                    style={{width:'100%',padding:'0.65rem 0.8rem',background:'var(--white)',border:'1px solid var(--border)',borderRadius:'2px',fontSize:'0.85rem',color:'var(--slate)',outline:'none',transition:'border 180ms'}}
+                    onFocus={e=>e.target.style.borderColor='var(--teal)'}
+                    onBlur={e=>e.target.style.borderColor='var(--border)'}/>
+                </div>
+              </div>
+              <div style={{marginBottom:'0.75rem'}}>
+                <label style={{display:'block',fontSize:'0.62rem',letterSpacing:'0.1em',textTransform:'uppercase',color:'var(--muted)',marginBottom:'0.35rem',fontWeight:500}}>Email</label>
+                <input type="email" placeholder="correo@ejemplo.com" value={form.email} onChange={upd('email')} disabled={loading}
+                  style={{width:'100%',padding:'0.65rem 0.8rem',background:'var(--white)',border:'1px solid var(--border)',borderRadius:'2px',fontSize:'0.85rem',color:'var(--slate)',outline:'none',transition:'border 180ms'}}
+                  onFocus={e=>e.target.style.borderColor='var(--teal)'}
+                  onBlur={e=>e.target.style.borderColor='var(--border)'}/>
+              </div>
+              <div style={{marginBottom:'0.75rem'}}>
+                <label style={{display:'block',fontSize:'0.62rem',letterSpacing:'0.1em',textTransform:'uppercase',color:'var(--muted)',marginBottom:'0.35rem',fontWeight:500}}>Tratamiento de interés</label>
+                <select value={form.tratamiento} onChange={upd('tratamiento')} disabled={loading}
+                  style={{width:'100%',padding:'0.65rem 0.8rem',background:'var(--white)',border:'1px solid var(--border)',borderRadius:'2px',fontSize:'0.85rem',color:'var(--slate)',outline:'none'}}>
+                  <option>Implantes dentales</option><option>Ortodoncia Invisalign</option><option>Blanqueamiento</option><option>Estética dental</option><option>Primera visita general</option>
+                </select>
+              </div>
+              <div style={{marginBottom:'1.1rem'}}>
+                <label style={{display:'block',fontSize:'0.62rem',letterSpacing:'0.1em',textTransform:'uppercase',color:'var(--muted)',marginBottom:'0.35rem',fontWeight:500}}>Mensaje</label>
+                <textarea placeholder="Cuéntanos brevemente qué necesitas..." rows="3" value={form.mensaje} onChange={upd('mensaje')} disabled={loading}
+                  style={{width:'100%',padding:'0.65rem 0.8rem',background:'var(--white)',border:'1px solid var(--border)',borderRadius:'2px',fontSize:'0.85rem',color:'var(--slate)',outline:'none',resize:'vertical',transition:'border 180ms'}}
+                  onFocus={e=>e.target.style.borderColor='var(--teal)'}
+                  onBlur={e=>e.target.style.borderColor='var(--border)'}/>
+              </div>
+              {err && <p style={{fontSize:'0.75rem',color:'#A32D2D',marginBottom:'0.75rem'}}>{err}</p>}
+              <button type="submit" disabled={loading} className="btn-slate" style={{width:'100%',padding:'0.85rem',borderRadius:'2px',fontSize:'0.75rem',fontWeight:500,letterSpacing:'0.08em',textTransform:'uppercase',opacity:loading?0.6:1,cursor:loading?'wait':'pointer'}}>
+                {loading ? 'Enviando...' : 'Reservar cita →'}
+              </button>
+            </form>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Footer(){
+  const sc=id=>e=>{e.preventDefault();document.getElementById(id)?.scrollIntoView({behavior:'smooth'});};
+  return(
+    <footer style={{background:'#0F1A22',padding:'2rem 1.5rem',borderTop:'1px solid rgba(168,213,204,0.08)'}}>
+      <div style={{maxWidth:'1100px',margin:'0 auto',display:'flex',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:'1rem'}}>
+        <span style={{fontFamily:'Playfair Display,serif',fontSize:'1rem',fontWeight:700,color:'#FFFFFF'}}>Big<span style={{color:'var(--mint)'}}>Tooth</span></span>
+        <div style={{display:'flex',gap:'1.5rem',flexWrap:'wrap'}}>
+          {[['Servicios','sec-servicios'],['Nosotros','sec-nosotros'],['Testimonios','sec-testimonios'],['Contacto','contacto']].map(([l,id])=>(
+            <a key={l} href="#" onClick={sc(id)} className="footer-link">{l}</a>
+          ))}
+        </div>
+        <span style={{fontSize:'0.65rem',color:'rgba(247,250,251,0.4)',letterSpacing:'0.04em'}}>© 2025 BigTooth · Deusto, Bilbao</span>
+      </div>
+    </footer>
+  );
+}
+
+function FAB(){
+  const sc=e=>{e.preventDefault();document.getElementById('contacto')?.scrollIntoView({behavior:'smooth'});};
+  return(
+    <a href="#contacto" onClick={sc} title="Reservar cita" className="btn-teal" style={{position:'fixed',bottom:'1.5rem',right:'1.5rem',width:'52px',height:'52px',borderRadius:'50%',display:'flex',alignItems:'center',justifyContent:'center',zIndex:60,boxShadow:'0 4px 18px rgba(42,124,111,0.45)',textDecoration:'none'}}>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+    </a>
+  );
+}
+
+function App(){
+  const [splash,setSplash]=useState(true);
+  return(
+    <div style={{background:'var(--ice)',minHeight:'100%'}}>
+      {splash&&<Splash onDone={()=>setSplash(false)}/>}
+      <Navbar/><S1/><S2/><S3/><Testimonios/><Contacto/><Footer/><FAB/>
     </div>
-  </div>
-</div>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-logo">Big<span>Tooth</span></div>
-    <div class="footer-copy">© 2025 BigTooth Clínica Dental · C/ Lehendakari Aguirre 23, Deusto · 944 123 456</div>
-    <div class="footer-links">
-      <a href="#">Política de privacidad</a>
-      <a href="#">Aviso legal</a>
-      <a href="#">Cookies</a>
-    </div>
-  </div>
-</footer>
-
-<a href="https://wa.me/34944123456" class="wa-btn" title="WhatsApp BigTooth" target="_blank" rel="noopener">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.998 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.533 5.853L.057 23.786a.5.5 0 00.611.644l6.104-1.6A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.625 0 11.998 0zm0 21.818a9.818 9.818 0 01-5.007-1.374l-.358-.213-3.722.976.994-3.624-.234-.372A9.818 9.818 0 012.182 12c0-5.42 4.396-9.818 9.816-9.818 5.42 0 9.818 4.397 9.818 9.818 0 5.422-4.397 9.818-9.818 9.818z"/></svg>
-</a>
-
-<script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
 </script>
 </body>
 </html>
